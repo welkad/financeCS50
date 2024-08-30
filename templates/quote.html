@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="d-flex justify-content-center">
+            <div class="d-flex mb-3" style="width: 350px;">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Stock Symbol" type="text">
+                <button class="btn btn-primary ms-2" type="submit">Get Quote</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- {% if quote %}
+        <div class="mb-3">
+            <span>{{ quote['symbol'] }} : {{ usd(quote['price']) }}</span>
+        </div>
+    {% endif %} -->
+
+{% endblock %}

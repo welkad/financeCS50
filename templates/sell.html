@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+
+<form action="/sell" method="post" class="d-flex justify-content-center">
+    <div class="mb-3 d-flex flex-column align-items-start" style="width: 200px;">
+        <select class="form-control mb-3" name="symbol" {% if not request.args.get('symbol') %}autofocus{% endif %}>
+            <option disabled selected>Stock Symbol</option>
+            {% for share in current_shares %}
+                <option value="{{ share['symbol'] }}" {% if request.args.get('symbol') == share['symbol'] %}selected{% endif %}>
+                    {{ share['symbol'] }}
+                </option>
+            {% endfor %}
+        </select>
+        {% if request.args.get('symbol') %}
+            {% for share in current_number %}
+                {% if request.args.get('symbol') == share['symbol'] %}
+                        <input type="number" class="form-control mb-3" name="shares" min="1" max="{{ share['net_shares'] }}" value = "{{ share['net_shares'] }}" placeholder="How Many?">
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <input type="number" class="form-control mb-3" name="shares" min="1" placeholder="How Many?">
+        {% endif %}
+        <button class="btn btn-primary w-100" type="submit">Sell Shares</button>
+    </div>
+</form>
+
+{% endblock %}

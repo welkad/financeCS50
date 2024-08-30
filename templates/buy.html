@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+
+    <form action="/buy" method="post" class="d-flex justify-content-center">
+        <div class="mb-3 d-flex flex-column align-items-start" style="width: 200px;">
+            <input type="text" autocomplete="off" class="form-control mb-3" name="symbol" placeholder="Stock Symbol" value="{{ request.args.get('symbol', '') }}" {% if not request.args.get('symbol') %}autofocus{% endif %}>
+            <input type="number" min="1" autocomplete="off" class="form-control mb-3" name="shares" placeholder="How many?">
+            <button class="btn btn-primary w-100" type="submit">Purchase</button>
+        </div>
+    </form>
+
+{% endblock %}

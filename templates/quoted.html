@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+
+    <div class="mb-3">
+        <span>{{ quote['symbol'] }} : {{ usd(quote['price']) }}</span>
+    </div>
+
+{% endblock %}
